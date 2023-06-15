@@ -46,9 +46,10 @@ func (p *FindInstance) GetCurrentSources() []*Source {
 	// We take the address and then dereference it to trick go vet from creating a possible misuse of unsafe.Pointer
 	blockp := *(*unsafe.Pointer)(unsafe.Pointer(&ret))
 
-	for i, s := range sources {
+	for i, _ := range sources {
 		sources[i] = (*Source)(blockp)
-		blockp = unsafe.Add(blockp, unsafe.Sizeof(s))
+		// Increment pointer
+		blockp = unsafe.Add(blockp, unsafe.Sizeof(Source{}))
 	}
 
 	return sources
