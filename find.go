@@ -2,7 +2,6 @@ package gondi
 
 import (
 	"errors"
-	"fmt"
 	"unsafe"
 )
 
@@ -40,13 +39,12 @@ func (p *FindInstance) GetCurrentSources() []*Source {
 	var numSources uint32
 	ret := ndilib_find_get_current_sources(p.ndiInstance, uintptr(unsafe.Pointer(&numSources)))
 
-	fmt.Printf("numSources: %d\n", numSources)
 	sources := make([]*Source, numSources)
 
 	// We take the address and then dereference it to trick go vet from creating a possible misuse of unsafe.Pointer
 	blockp := *(*unsafe.Pointer)(unsafe.Pointer(&ret))
 
-	for i, _ := range sources {
+	for i := range sources {
 		sources[i] = (*Source)(blockp)
 		// Increment pointer
 		blockp = unsafe.Add(blockp, unsafe.Sizeof(Source{}))
