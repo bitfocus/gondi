@@ -22,7 +22,6 @@ func videoToNDI(sender *gondi.SendInstance) {
 		}
 
 		for video.Read() {
-			startFrameTime := time.Now()
 			videoFrame := gondi.NewVideoFrameV2()
 			videoFrame.FourCC = gondi.FourCCTypeRGBA
 			videoFrame.FrameFormatType = gondi.FrameFormatProgressive
@@ -32,16 +31,7 @@ func videoToNDI(sender *gondi.SendInstance) {
 			videoFrame.FrameRateN = 30000
 			videoFrame.FrameRateD = 1001
 			videoFrame.Data = &video.FrameBuffer()[0]
-			sender.SendVideoFrameAsync(videoFrame)
-
-			// force frame lock to the video FPS
-			// https://stackoverflow.com/a/61878644
-			elapsed := time.Since(startFrameTime)
-			fps := time.Duration((1.0 / video.FPS()) * float64(time.Second))
-			if elapsed.Nanoseconds() < fps.Nanoseconds() {
-				syncTime := int(fps.Nanoseconds() - elapsed.Nanoseconds())
-				time.Sleep(time.Duration(syncTime) * time.Nanosecond)
-			}
+			sender.SendVideoFrame(videoFrame)
 		}
 	}
 }
