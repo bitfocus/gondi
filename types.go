@@ -72,6 +72,8 @@ const (
 type FourCCType [4]byte
 
 var (
+	FourCCTypeRGBA = [4]byte{'R', 'G', 'B', 'A'}
+	FourCCTypeRGBX = [4]byte{'R', 'G', 'B', 'X'}
 	// YCbCr color space using 4:2:2.
 	FourCCTypeUYVY FourCCType = [4]byte{'U', 'Y', 'V', 'Y'}
 	// Planar 8bit, 4:4:4:4 video format.

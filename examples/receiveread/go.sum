@@ -1,0 +1,6 @@
+github.com/bitfocus/gondi v0.0.2 h1:Q/kscMhnp0iX+Vkz274vG1loBw2lKyq5yq4b1XjllTE=
+github.com/bitfocus/gondi v0.0.2/go.mod h1:g/pdkw//j2qJD+l9Yv8xf3RtjnrwBrZQBmlYIJ8GXQs=
+github.com/ebitengine/purego v0.3.2 h1:+pV+tskAkn/bxEcUzGtDfw2VAe3bRQ26kdzFjPPrCww=
+github.com/ebitengine/purego v0.3.2/go.mod h1:iIjxzd6CiRiOG0UyXP+V1+jWqUXVjPKLAI0mRfJZTmQ=
+github.com/nsmith5/mjpeg v0.0.0-20200913181537-54b8ada0e53e h1:bQo/jQ9qvcw7zqnovm8IbLsaOq3F+ELUQcxtxvalQvA=
+github.com/nsmith5/mjpeg v0.0.0-20200913181537-54b8ada0e53e/go.mod h1:PW9xCZScEClMBP22n37i0SnN/8B9YzNXTNvOaIkLjv0=
